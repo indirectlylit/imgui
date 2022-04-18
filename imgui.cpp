@@ -150,19 +150,19 @@ CODE
    For every application frame, your UI code will be called only once. This is in contrast to e.g. Unity's implementation of an IMGUI,
    where the UI code is called multiple times ("multiple passes") from a single entry point. There are pros and cons to both approaches.
  - Our origin is on the top-left. In axis aligned bounding boxes, Min = top-left, Max = bottom-right.
- - This codebase is also optimized to yield decent performances with typical "Debug" builds settings.
+ - This codebase is also optimized to yield decent performance with typical "Debug" builds settings.
  - Please make sure you have asserts enabled (IM_ASSERT redirects to assert() by default, but can be redirected).
    If you get an assert, read the messages and comments around the assert.
  - C++: this is a very C-ish codebase: we don't rely on C++11, we don't include any C++ headers, and ImGui:: is a namespace.
  - C++: ImVec2/ImVec4 do not expose math operators by default, because it is expected that you use your own math types.
    See FAQ "How can I use my own math types instead of ImVec2/ImVec4?" for details about setting up imconfig.h for that.
    However, imgui_internal.h can optionally export math operators for ImVec2/ImVec4, which we use in this codebase.
- - C++: pay attention that ImVector<> manipulates plain-old-data and does not honor construction/destruction (avoid using it in your code!).
+ - C++: be aware that ImVector<> manipulates plain-old-data and does not honor construction/destruction (avoid using it in your code!).
 
 
  HOW TO UPDATE TO A NEWER VERSION OF DEAR IMGUI
  ----------------------------------------------
- - Overwrite all the sources files except for imconfig.h (if you have modified your copy of imconfig.h)
+ - Overwrite all the source files except for imconfig.h (if you have modified your copy of imconfig.h)
  - Or maintain your own branch where you have imconfig.h modified as a top-most commit which you can regularly rebase over "master".
  - You can also use '#define IMGUI_USER_CONFIG "my_config_file.h" to redirect configuration to your own file.
  - Read the "API BREAKING CHANGES" section (below). This is where we list occasional API breaking changes.
